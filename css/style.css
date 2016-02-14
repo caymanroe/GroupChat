@@ -140,10 +140,36 @@ header ul li {
 
 #menu {
 	height: 45px;
-	width: 338px;
+	width: 600px;
 	position: absolute;
 	right: 0px;
 	top: 0px;
+	text-align: center;
+}
+
+#search {
+	width: 200px;
+	height: 40px;
+	top: 7px;
+	position: relative;
+	margin: 0 20px 0 30px;
+}
+
+#search input {
+	width: 165px;
+	color: #475763;
+	height: 29px;
+	border-radius: 20px;
+	border: 1px solid #ECF0F1;
+	padding: 0 25px 0 10px;
+}
+
+#search i {
+	position: absolute;
+	top: 6px;
+	right: 2px;
+	color: #BBBBBB;
+	cursor: pointer;
 }
 
 #notifications:hover, #name:hover {

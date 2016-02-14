@@ -43,6 +43,7 @@
 			<div id="logo"><i class="icon-logo"></i></div>
 
 			<ul id="menu">
+				<li id="search"><input type="text" name="search" placeholder="Group Search"><i class="icon-search"></i></li>
 				<li id="notifications"><a href="#Notifications"><i class="icon-notifications"></i></a></li>
 				<li id="name"><a href="#"><span><?php echo $_SESSION['fName'].' '. $_SESSION['lName']; ?></span><img id="ppic" src="css/images/profile/<?php echo $userImage; ?>"></a></li>
 				<li id="logout"><a href="logout.php"><i class="icon-logout"></i><p>Logout</p></a></li>
