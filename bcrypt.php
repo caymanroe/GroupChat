@@ -1,4 +1,5 @@
 <?php
+/*This is used for testing purposes only*/
 $options = array('cost' => 13);
 echo "Bcrypt: ";
 echo $hash = password_hash("pass", PASSWORD_BCRYPT, $options);
