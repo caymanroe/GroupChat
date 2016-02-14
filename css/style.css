@@ -1,0 +1,719 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video, textarea {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	font-family: Roboto;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+/*===========================================================*/
+/*=================  Begining of CSS  =======================*/
+/*===========================================================*/
+
+html, body {
+	background-color: #ECF0F1;
+}
+
+header {
+	position: fixed;
+	top: 0px;
+	height: 45px;
+	width: 100%;
+	border-bottom: 1px solid #236C9C;
+	background-color: #2980B9;
+	color: #ECF0F1;
+	z-index: 100;
+}
+
+header * {
+	color: #ECF0F1;
+}
+
+header ul li {
+	float: left;
+	height: 45px;
+}
+
+#nav {
+	height: 45px;
+	width: 375px;
+	position: absolute;
+	left: 0px;
+}
+
+#nav li {
+	width: 125px;
+}
+
+#nav li:hover {
+	background-color: #3498DB;
+}
+
+#nav li:focus {
+	background-color: #2C3E50;
+}
+
+#nav li a {
+	display: block;
+	position: relative;
+	height: 100%;
+	width: 100%;
+	padding: 9px 0 0 0;
+	text-align: center;
+	/*color: #989898;*/
+}
+
+#nav li a i {
+	font-size: 22px;
+	top: 2px;
+	position: relative;
+	display: inline-block;
+}
+
+#nav li a span { 
+	position: relative;
+	display: inline-block;
+}
+
+#logo {
+	position: relative;
+	height: 45px;
+	width: 45px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+#logo i {
+	font-size: 37px;
+	position: absolute;
+	top: 4px;
+	left: -3px;
+	/*color: #B0CECC;*/
+}
+
+#menu {
+	height: 45px;
+	width: 338px;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+}
+
+#notifications:hover, #name:hover {
+	background-color: #3498DB;
+}
+
+#notifications {
+	position: relative;
+	width: 45px;
+	font-size: 26px;
+}
+
+#notifications a i {
+	position: absolute;
+	top: 10px;
+	/*color: #C1C1C1;*/
+	left: 4px;
+}
+
+#name {
+	width: 185px;
+	position: relative;
+}
+
+#name a {
+	display: block;
+	text-align: center;
+}
+
+#name a span {
+	display: inline-block;
+	position: relative;
+	top: -10px;
+	/*color: #929292;*/
+}
+
+#ppic {
+	display: inline-block;
+	position: relative;
+	top: 3px;
+	width: 38px;
+	height: 38px;
+	background-color: #B0CECC;
+	border-radius: 5px;
+	margin-left: 15px;
+}
+
+#logout {
+	width: 108px;
+	position: relative;
+	text-align: center;
+}
+
+#logout a {
+	position: relative;
+	top: 6px;
+	height: 32px;
+	width: 90px;
+	border-radius: 4px;
+	text-align: center;
+	background-color: #ECF0F1;
+	display: inline-block;
+}
+
+#logout a p {
+	position: relative;
+	font-family: 'Roboto', impact;
+	font-weight: 500;
+	top: 8px;
+	margin-left: -3px;
+	color: #2980B9;
+	float: left;
+	display: inline-block;
+}
+
+#logout a i {
+	color: #2980B9;
+	float: left;
+	top: 5px;
+	left: -2px;
+	display: inline-block;
+	position: relative;
+	font-size: 22px;
+}
+
+#wrapper {
+	position: relative;
+	padding: 32px 32px 32px 282px;
+	margin: 46px 0 0 0;
+	overflow: hidden;
+}
+
+aside {
+	width: 200px;
+	position: fixed;
+	background-color: #E6EEF3;
+	left: 0;
+	top: 46px;
+	bottom: 0;
+	overflow: auto;
+	border-right: 1px solid #D6D6D6;
+}
+
+aside ul {
+	color: #2E4453;
+}
+
+.listoption {
+	display: block;
+	height: 45px;
+	position: relative;
+}
+
+.listoption:hover {
+	background-color: #f3f6f8;
+}
+
+.listoption:hover > span, .listoption:hover > i  {
+	color: #00aadc;
+}
+
+.listoption i {
+	position: relative;
+	margin: 14px 0 0 12px;
+	display: inline-block;
+	font-size: 20px;
+	color: #87A6BC;
+	font-weight: 300;
+	float: left;
+}
+
+.listoption span {
+	position: relative;
+	margin: 17px 0 0 5px;
+	display: inline-block;
+	font-size: 13px;
+	color: #475763;
+	font-weight: 400;
+	float: left;
+}
+
+.sidebar-heading {
+	display: inline-block;
+	margin: 18px 0 0 10px;
+	font-size: 12px;
+	color: #475763;
+	font-weight: 500;
+	float: left;
+	clear: both;
+}
+
+.list-seemore {
+	font-size: 12px;
+	display: block;
+	margin: 18px 0 0 4px;
+	float: left;
+	color: #929292;
+}
+
+.listcontainer li:first-of-type {
+	clear: both;
+}
+
+#display {
+	width: 600px;
+	margin: auto;
+}
+
+.post {
+	width: 100%;
+	position: relative;
+	margin: 0 0 30px 0;
+}
+
+.postPic {
+	position: absolute;
+	margin: 5px 0 0 5px;
+	width: 50px;
+	height: 50px;
+}
+
+.postInfo {
+	position: relative;
+	top: 5px;
+	left: 0;
+	margin: 0 0 30px 60px;
+	word-break: break-all;
+}
+
+.postUser {
+	font-weight: 500;
+	font-size: 15px;
+	margin: 0 0 5px 0;
+	display: inline-block;
+	color: #236C9C;
+}
+
+.deletePost, .deleteComment {
+	position: absolute;
+	top: 3px;
+	right: 0;
+	color: #B1B1B1;
+	cursor: pointer;
+}
+
+.postContent {
+	font-weight: 400;
+	font-size: 14px;
+	margin: 0 0 5px 0;
+	line-height: 18px;
+}
+
+.postShowComments, .postTime {
+	font-weight: 400;
+	font-size: 11px;
+	float: left;
+	margin: 0 4px 0 0;
+	display: inline-block;
+}
+
+.postShowComments {
+	cursor: pointer;
+	color: #236C9C;
+}
+
+.commentList {
+	clear: both;
+	margin: 0px 0 0px 100px;
+}
+
+.comment {
+	position: relative;
+	margin: 5px 0 0 0;
+	background-color: #E6EEF3;
+	border: 1px solid #DDE4E8;
+	padding: 10px;
+}
+
+.commentUser {
+	float: left;
+	font-weight: 500;
+	font-size: 13px;
+	color: #236C9C;
+}
+
+.commentTime {
+	float: left;
+	font-weight: 400;
+	font-size: 11px;
+	margin: 2px 0 0 10px;
+}
+
+.commentContent {
+	clear: both;
+	display: block;
+	padding: 5px 0 0 0;
+	margin: 5px 0 0 0;
+	font-size: 13px;
+	line-height: 17px;
+}
+
+.commentNew {
+	margin: 5px 0 0 100px;
+}
+
+.commentNewBox {
+	border: 4px solid #E6EEF3;
+	width: 472px;
+	padding: 10px;
+	font-size: 14px;
+	display: block;
+	overflow: hidden;
+	resize: none;
+	line-height: 17px;
+}
+
+.commentNewBox:focus {
+	border: 4px solid #C0D3DE;
+	outline: 0;
+}
+
+.postContent, .commentContent, .commentNewBox {
+	color: #475763;
+}
+
+#newPost {
+	margin: 0 0 20px 0;
+	padding: 0 0 20px 0;
+	border-bottom: 1px solid #DADADA;
+	position: relative;
+}
+
+#newPost img {
+	height: 50px;
+	width: 50px;
+	position: absolute;
+	top: 0px;
+	left: 5px;
+	display: block;
+}
+
+#postNewBox {
+	border: 4px solid #E6EEF3;
+	width: 468px;
+	padding: 13px 52px 13px 13px;
+	font-size: 14px;
+	display: inline-block;
+	overflow: hidden;
+	resize: none;
+	line-height: 17px;
+	position: relative;
+	margin: 0 0 0 52px;
+	left: 7px;
+}
+
+#send {
+	display: block;
+	width: 43px;
+	height: 43px;
+	background-color: #E0E9EF;
+	position: absolute;
+	right: 4px;
+	top: 4px;
+	z-index: 100;
+	height: calc(100% - 31px);
+	cursor: pointer;
+}
+
+#send i {
+	font-size: 25px;
+	color: #ECF0F1;
+	position: relative;
+	top: calc(50% - 13px);
+	left: 5px;
+
+}
+
+#postNewBox:focus {
+	border: 4px solid #C0D3DE;
+	outline: 0;
+}
+
+#postNewBox:focus + #send {
+	background-color: #C0D3DE;
+}
+
+/*============================*/
+/*======   Login Page  =======*/
+/*============================*/
+
+#login_wrap {
+	width: 840px;
+	margin: auto;
+	background-color: red;
+	position: relative;
+	top: 100px;
+}
+
+#welcome {
+	float: left;
+	width: 480px;
+}
+
+#welcome h1 {
+	font-size: 38px;
+	font-weight: bold;
+}
+
+#welcome p {
+	font-size: 21px;
+	line-height: 31px;
+	margin: 25px 0 0 0;
+}
+
+#welcome h2 {
+	font-size: 23px;
+	font-weight: bold;
+	margin: 150px 0 0 0;
+}
+
+#welcome ul {
+	list-style-type: disc;
+	padding: 0 0 0 20px;
+}
+
+#welcome ul li {
+	margin: 10px 0 0 0;
+}
+
+
+
+#forms {
+	float: left;
+	width: 270px;
+	background-color: white;
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 12px;
+	border-radius: 5px;
+	clear: both;
+}
+
+#username {
+	border: 1px solid #ccd6dd;
+	width: 262px;
+	height: 30px;
+	border-radius: 2px;
+	margin: 0 0 10px 0;
+	padding: 0 0 0 6px;
+}
+
+#password {
+	border: 1px solid #ccd6dd;
+	width: 168px;
+	height: 30px;
+	border-radius: 2px;
+	margin: 0 10px 0 0;
+	float: left;
+	padding: 0 0 0 6px;
+}
+
+#submit_btn {
+	float: left;
+	height: 33px;
+	width: 83px;
+	font-size: 14px;
+	font-weight: bold;
+	background-color: rgb(121, 158, 255);
+	border: 1px solid #ccd6dd;
+	color: white;
+	border-radius: 2px;
+}
+
+#signup_link {
+	font-size: 14px;
+	padding-top: 5px;
+	top: 3px;
+	clear: both;
+	position: relative;
+	color: rgb(108, 108, 108);
+}
+
+#signup_link a {
+	text-decoration: none;
+	color: rgb(100, 133, 221);
+}
+
+#wrong {
+	font-size: 14px;
+	color: rgb(221, 0, 0);
+	position: relative;
+	top: 4px;
+	clear: both;
+	font-weight: bold;
+}
+
+/*------------------------------------------------*/
+/*-----------------Signup Page--------------------*/
+/*------------------------------------------------*/
+
+#signupbody {
+	background-color: rgb(42, 55, 73);
+	height: 100%;
+	position: relative;
+	top: 0px;
+	bottom: 0pc;
+}
+
+#signup_wrapper {
+	width: 550px;
+	margin: auto;
+	position: relative;
+	top: 80px;
+	background-color: white;
+	border-radius: 7px;
+	padding: 50px 0 50px 0;
+	-webkit-box-shadow: 3px 3px 10px 12px #1F3241;
+	-moz-box-shadow:    3px 3px 10px 12px #1F3242;
+	box-shadow:         3px 3px 10px 12px #1F3242;
+}
+
+#signup_box {
+	position: relative;
+	width: 410px;
+	left: 70px;
+}
+
+#signup_box h1 {
+	font-size: 48px;
+	text-align: center;
+	margin: 0 0 20px 0;
+}
+
+.signup_input {
+	width: 400px;
+	border: 1px solid #ccd6dd;
+	height: 30px;
+	border-radius: 2px;
+	padding: 0 0 0 6px;
+	margin: 0 0 20px 0;
+	font-size: 13px;
+}
+
+#file_cover {
+	height: 21px;
+	width: 100px;
+	font-size: 13px;
+	background-color: rgb(228, 228, 228);
+	border: 3px solid #CDCDCD;
+	color: rgb(97, 97, 97);
+	border-radius: 2px;	
+	text-align: center;
+	padding: 9px 0 0 0;
+	cursor: pointer;
+	margin: 0 0 20px 0;
+	font-family: helvetica;
+	float: left;
+}
+
+#pic_info {
+	float: left;
+	display: block;
+	height: 36px;
+	width: 250px;
+	font-size: 11px;
+	margin: 2px 0 0 20px;
+	color: rgb(255, 63, 63);
+}
+
+#signup_submit {
+	height: 33px;
+	width: 406px;
+	font-size: 14px;
+	font-weight: bold;
+	background-color: rgb(121, 158, 255);
+	border: 1px solid #ccd6dd;
+	color: white;
+	border-radius: 2px;
+	cursor: pointer;
+	clear: both;
+}
+
+#login_link {
+	font-size: 14px;
+	position: relative;
+	margin: 20px 0 0 0;
+	color: rgb(108, 108, 108);
+	clear: both;
+}
+
+#login_link a {
+	text-decoration: none;
+	color: rgb(100, 133, 221);
+}
+
+#terms {
+	font-size: 11px;
+	margin: 20px 0 0 0;
+	position: relative;
+	color: rgb(108, 108, 108);
+	line-height: 13px;
+	clear: both;
+}
+
+#invalid {
+	font-size: 14px;
+	color: red;
+	position: relative;
+	margin: 20px 0 0 128px;
+	display: block;
+	font-weight: bold;
+}
