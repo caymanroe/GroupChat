@@ -37,14 +37,48 @@ $(document).ready(function() {
     	return false;
     });
 
-	$.ajax({
-	 	type: 'post',
-		url: 'loadfeedall.php',
-		datatype: "html",
-		success: function(response) {
-		$("#display").empty().append(response);
-		}
-	});
+    $('.icon, .group h2').click(function() {
+    	var groupLoadId = $(this).closest('.group').attr('id');
+		var url = 'index.php';
+		var form = $('<form action="' + url + '" method="post">' + '<input type="text" name="groupId" value="' + groupLoadId + '" />' + '</form>');
+		$('body').append(form).hide();
+		form.submit();
+    });
+
+    var attr = $('#display').attr('data-h');
+	if (typeof attr !== typeof undefined && attr !== false) {
+	    $.ajax({
+	      	type: 'post',
+			url: 'loadfeed.php',
+			datatype: "html",
+			data: {
+				group:attr
+			},
+			success: function(response) {
+				$("#display").empty().append(response);
+			}
+		});
+	} else {
+		$.ajax({
+		 	type: 'post',
+			url: 'loadfeedall.php',
+			datatype: "html",
+			success: function(response) {
+			$("#display").empty().append(response);
+			}
+		});
+	}
+
+
+    $('.icon-search').click(function(){
+        searchGroups();
+    });
+    
+    $('#search input').keypress(function(e){
+        if(e.which == 13){//Enter key pressed
+            searchGroups();
+        }
+    });
     
 
 });
@@ -154,3 +188,45 @@ $(document).on("click",".deleteComment",function() {
 		}
 	});
 });
+
+$(document).on("click",".canjoin",function() {
+	var loading = $(this).next();
+	var loaded = $(loading).next();
+    $(this).hide('slide',{direction:'left'},200);
+    $(loading).show('slide',{direction:'right'},200);
+    var groupId = $(loading).closest('.group').attr('id');
+    $.ajax({
+    	type:'post',
+    	url: 'submit.php',
+    	data: {
+    		action:'joingroup',
+    		groupId:groupId
+    	},
+    	success: function (response) {
+    		if (response=="1") {
+    			$(loading).delay(1000).hide('slide',{direction:'left'},200);
+    			$(loaded).delay(1200).show('slide',{direction:'right'},200);
+    		} else {
+    			alert("An error has occured. Please ensure you are connected to the internet. Otherwise, GroupChat may be experiencing difficulties.")
+    		}
+
+    	}
+    })
+
+
+});
+
+function searchGroups() {
+	if ($("#search input").val()!="") {
+		var searchTerm = $("#search input").val();
+		var url = 'grouplist.php';
+		var form = $('<form action="' + url + '" method="post">' + '<input type="text" name="groupSearch" value="' + searchTerm + '" />' + '</form>');
+		$('body').append(form).hide();
+		form.submit();
+		
+	} else {
+		alert("Search box is empty.")
+	}
+
+
+}

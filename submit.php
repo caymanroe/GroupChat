@@ -11,6 +11,7 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
 		case 'newcomment' : newComment($con, $_POST['text'], $_POST['postId']);break;
 		case 'removepost' : removePost($con, $_POST['postId']);break;
 		case 'removecomment' : removeComment($con, $_POST['commentId']);break;
+		case 'joingroup' : joinGroup($con, $_POST['groupId']);break;
 	}
 }	
 
@@ -90,6 +91,18 @@ function removeComment($con, $comment) {
 
 		} else {
 			echo "You do not have permission to delete this comment.";
+		}
+	}
+}
+
+function joingroup($con, $group) {
+	if (!empty($_POST['groupId'])) {
+		$sql = "INSERT INTO `groupmember` (userid, groupid) VALUES ('".$_SESSION['uid']."','".$group."')";
+
+		if (mysqli_query($con, $sql)) {
+			echo "1";
+		} else {
+			echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 		}
 	}
 }

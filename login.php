@@ -39,47 +39,6 @@
 
 ?>
 
-<!--<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Groupchat</title>
-		<link rel="stylesheet" type="text/css" href="js/jquery-2.1.4.js">
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-	</head>
-
-	<body>
-			
-	<div data-role="page">
-
-		<div data-role="header">
-			<h1>Login</h1>
-		</div>
-		
-		<div role="main" class="ui-content">
-				<form name="new" id="login" action="login.php" method="post" enctype="multipart/form-data">
-					
-					<div id="emaildiv">
-						<input type="email" name="email" id="email" class="text-input" placeholder="Email">
-					</div>
-
-					<div id="passworddiv">
-						<input type="password" name="password" id="password" class="text-input" placeholder="Password">
-					</div>
-
-					<input type="submit" value="Log in" name="Submit" id="submit_btn" class="button">
-
-				</form>
-		</div>
-			
-	</div>
-		
-		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-
-
-	</body>
-</html>-->
-
 <!DOCTYPE html>
 <html>
 	<head>

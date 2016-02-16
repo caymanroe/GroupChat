@@ -140,10 +140,36 @@ header ul li {
 
 #menu {
 	height: 45px;
-	width: 338px;
+	width: 600px;
 	position: absolute;
 	right: 0px;
 	top: 0px;
+	text-align: center;
+}
+
+#search {
+	width: 200px;
+	height: 40px;
+	top: 7px;
+	position: relative;
+	margin: 0 20px 0 30px;
+}
+
+#search input {
+	width: 165px;
+	color: #475763;
+	height: 29px;
+	border-radius: 20px;
+	border: 1px solid #ECF0F1;
+	padding: 0 25px 0 10px;
+}
+
+#search i {
+	position: absolute;
+	top: 6px;
+	right: 2px;
+	color: #BBBBBB;
+	cursor: pointer;
 }
 
 #notifications:hover, #name:hover {
@@ -716,4 +742,107 @@ aside ul {
 	margin: 20px 0 0 128px;
 	display: block;
 	font-weight: bold;
+}
+
+/*========================================*/
+/*========== Group Search Page ===========*/
+/*========================================*/
+
+#groupList-head {
+	position: relative;
+	width: 500px;
+	margin: 70px auto 0 auto;
+	margin-top: 70px;
+	background-color: white;
+	border: 1px solid #DDE4E8;
+	padding: 25px;
+}
+
+#groupList-head h2 {
+	color: #475763;
+}
+
+#groupList-head h2 span {
+	font-weight: bold;
+
+}
+
+#groupList {
+	position: relative;
+	width: 550px;
+	margin: auto;
+}
+
+.group {
+	/*height: 68px;*/
+	background-color: white;
+	border: 1px solid #DDE4E8;
+	position: relative;
+	margin: 10px 0 0 0;
+}
+
+.group .icon {
+	position: absolute;
+	top: 7px;
+	left: 0;
+	font-size: 30px;
+	color: #475763;
+	cursor: pointer;
+}
+
+.group h2 {
+	position: relative;
+	margin: 5px 0 0 45px;
+	font-size: 17px;
+	color: #2980B9;
+	cursor: pointer;
+}
+
+.group h3 {
+	position: relative;
+	margin: 2px 0 0 45px;
+	font-size: 12px;
+	color: #475763;
+}
+
+.group p {
+	position: relative;
+	margin: 8px 0 7px 6px;
+	max-width: 480px;
+	display: block;
+	color: #475763;
+	font-size: 14px;
+	line-height: 17px;
+}
+
+.joinedIcon {
+	position: absolute;
+	top: 14px;
+	right: 0px;
+	font-size: 30px;
+	color: #ACDAA4;
+}
+
+.group .icon:hover, .group h2:hover {
+	color: black;
+}
+
+.canjoin {
+	color: #C5C5C5;
+}
+
+.canjoin:hover {
+	color: #9C9C9C;
+}
+
+.loaded {
+	display: none;
+}
+
+.joinedIconLoading {
+	position: absolute;
+	top: 14px;
+	right: 1px;
+	font-size: 28px;
+	display: none;
 }

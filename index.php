@@ -35,7 +35,7 @@
 
 		<header>
 			<ul id="nav">
-				<li><a href="#Dashboard"><i class="icon-dashboard"></i><span>Dashboard</span></a></li>
+				<li><a href="index.php"><i class="icon-dashboard"></i><span>Dashboard</span></a></li>
 				<li><a href="#Profile"><i class="icon-profile"></i><span>Profile</span></a></li>
 				<li><a href="#Messages"><i class="icon-messages"></i><span>Messages</span></a></li>
 			</ul>
@@ -43,6 +43,7 @@
 			<div id="logo"><i class="icon-logo"></i></div>
 
 			<ul id="menu">
+				<li id="search"><input type="text" name="search" placeholder="Group Search"><i class="icon-search"></i></li>
 				<li id="notifications"><a href="#Notifications"><i class="icon-notifications"></i></a></li>
 				<li id="name"><a href="#"><span><?php echo $_SESSION['fName'].' '. $_SESSION['lName']; ?></span><img id="ppic" src="css/images/profile/<?php echo $userImage; ?>"></a></li>
 				<li id="logout"><a href="logout.php"><i class="icon-logout"></i><p>Logout</p></a></li>
@@ -72,7 +73,17 @@
 				</ul>
 			</aside>
 
-			<div id="display" data-g="0"></div>
+			<?php 
+
+				if (isset($_POST['groupId'])) {
+					echo "<div id=\"display\" data-g=\"0\" data-h=\"".$_POST['groupId']."\"></div>";
+				} else {
+					echo "<div id=\"display\" data-g=\"0\"></div>";
+				}
+
+
+
+			?>
 
 		</div>
 		<script type="text/javascript">

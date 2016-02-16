@@ -1,0 +1,20 @@
+
+.icon-messages:before { content: '\e800'; } /* '' */
+.icon-profile:before { content: '\e801'; } /* '' */
+.icon-dashboard:before { content: '\e802'; } /* '' */
+.icon-logo:before { content: '\e803'; } /* '' */
+.icon-feed:before { content: '\e804'; } /* '' */
+.icon-accounts:before { content: '\e805'; } /* '' */
+.icon-marketing:before { content: '\e806'; } /* '' */
+.icon-administration:before { content: '\e807'; } /* '' */
+.icon-notifications:before { content: '\e808'; } /* '' */
+.icon-logout:before { content: '\e809'; } /* '' */
+.icon-deployments:before { content: '\e80a'; } /* '' */
+.icon-production:before { content: '\e80b'; } /* '' */
+.icon-human:before { content: '\e80c'; } /* '' */
+.icon-send:before { content: '\e80d'; } /* '' */
+.icon-add:before { content: '\e80e'; } /* '' */
+.icon-remove:before { content: '\e80f'; } /* '' */
+.icon-search:before { content: '\e810'; } /* '' */
+.icon-spin:before { content: '\e811'; } /* '' */
+.icon-ok:before { content: '\e812'; } /* '' */
