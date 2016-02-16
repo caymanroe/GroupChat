@@ -35,7 +35,7 @@
 
 		<header>
 			<ul id="nav">
-				<li><a href="#Dashboard"><i class="icon-dashboard"></i><span>Dashboard</span></a></li>
+				<li><a href="index.php"><i class="icon-dashboard"></i><span>Dashboard</span></a></li>
 				<li><a href="#Profile"><i class="icon-profile"></i><span>Profile</span></a></li>
 				<li><a href="#Messages"><i class="icon-messages"></i><span>Messages</span></a></li>
 			</ul>
@@ -73,7 +73,17 @@
 				</ul>
 			</aside>
 
-			<div id="display" data-g="0"></div>
+			<?php 
+
+				if (isset($_POST['groupId'])) {
+					echo "<div id=\"display\" data-g=\"0\" data-h=\"".$_POST['groupId']."\"></div>";
+				} else {
+					echo "<div id=\"display\" data-g=\"0\"></div>";
+				}
+
+
+
+			?>
 
 		</div>
 		<script type="text/javascript">
