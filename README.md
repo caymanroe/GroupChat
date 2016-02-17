@@ -7,4 +7,6 @@ Users can post updates inside each group. Comments can then be made and are nest
 
 Group administrators can invite other users to join a group. If a group is set to private, invites are the only way for users to join. Public groups allow anyone with an account to join.
 
+**Demo: [gchat.co](gchat.co)** (May not be updated to reflect current master)
+
 ![alt tag](https://raw.githubusercontent.com/caymanroe/GroupChat/Create-Group-Function/css/images/Dashboard.jpg)
