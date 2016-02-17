@@ -102,7 +102,7 @@ function joingroup($con, $group) {
 		if (mysqli_query($con, $sql)) {
 			echo "1";
 		} else {
-			echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+			echo "Error: " . $sql . "<br>" . mysqli_error($con);
 		}
 	}
 }

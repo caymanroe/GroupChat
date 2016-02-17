@@ -27,8 +27,8 @@
 		<link rel="stylesheet" type="text/css" href="css/fontello.css">
 		<link rel="stylesheet" type="text/css" href="css/roboto.css">
 		<script src="js/jquery-2.1.4.js"></script>
+		<script src="js/jquery-ui-1.11.4/jquery-ui.min.js"></script>
 		<script src="js/page.js"></script>
-
 	</head>
 
 	<body>
@@ -49,45 +49,17 @@
 				<li id="logout"><a href="logout.php"><i class="icon-logout"></i><p>Logout</p></a></li>
 			</ul>
 		</header>
-		
-		<div id="wrapper">
-			
-			<aside>
-				<ul>
-					<li><a id="feedbutton" class="listoption" href="#Feed"><i class="icon-feed"></i><span>Feed</span></a></li>
-					<li><a class="listoption" href="newgroup.php"><i class="icon-add"></i><span>New Group</span></a></li>
-					
-					<li>
-						<ul id="groupbar" class="listcontainer">
-							<p class="sidebar-heading">My Groups |</p>
-							<a class="list-seemore" href="#more">See all</a>
-							<?php listGroups($_SESSION['uid'], $con); ?>	
-						</ul>
 
-						<ul id="friendbar" class="listcontainer">
-							<p class="sidebar-heading">My Friends |</p>
-							<a class="list-seemore" href="#more">See all</a>
-							<?php listFriends($_SESSION['uid'], $con); ?>
-						</ul>
-					</li>
-				</ul>
-			</aside>
+		<div id="NewGroup">
+			<div id="formTitle">
+				<h2>Create a new group</h2>
+			</div>
 
-			<?php 
-
-				if (isset($_POST['groupId'])) {
-					echo "<div id=\"display\" data-g=\"0\" data-h=\"".$_POST['groupId']."\"></div>";
-				} else {
-					echo "<div id=\"display\" data-g=\"0\"></div>";
-				}
-
-
-
-			?>
-
+			<form id="newGroup" action="submit.php" method="post" accept-charset="UTF-8">
+				
+			</form>
 		</div>
-		<script type="text/javascript">
-			
-		</script>
+
+
 	</body>
 </html>
