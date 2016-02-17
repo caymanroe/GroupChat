@@ -6,3 +6,5 @@ Once a user creates an account, they can create or join existing groups to engag
 Users can post updates inside each group. Comments can then be made and are nested under the relevant posts. Each group requires an administrator (automatically defined on group creation).
 
 Group administrators can invite other users to join a group. If a group is set to private, invites are the only way for users to join. Public groups allow anyone with an account to join.
+
+![alt tag](https://raw.githubusercontent.com/caymanroe/GroupChat/Create-Group-Function/css/images/Dashboard.jpg)
