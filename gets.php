@@ -13,13 +13,14 @@ function listGroups($userId, $con) {
 		while ($groupRow = mysqli_fetch_array($selectGroups)) {
 			$groupName = $groupRow['name'];
 			$groupIcon = $groupRow['icon'];
-		}
+		
 
-		if ($groupName == NULL && $groupIcon == NULL) {
-			echo "<li><a id=\"\" class=\"listoption\" href=\"#\"><span>No Groups</span></a></li>";
-		}
-		else {
-			echo "<li><a id=\"".$row['groupid']."\" class=\"listoption\" href=\"#".$groupName."\"><i class=\"".$groupIcon."\"></i><span>".$groupName."</span></a></li>";
+			if ($groupName == NULL && $groupIcon == NULL) {
+				echo "<li><a id=\"\" class=\"listoption\" href=\"#\"><span>No Groups</span></a></li>";
+			}
+			else {
+				echo "<li><a id=\"".$row['groupid']."\" class=\"listoption\" href=\"#".$groupName."\"><i class=\"".$groupIcon."\"></i><span>".$groupName."</span></a></li>";
+			}
 		}
 
 	}
