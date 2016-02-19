@@ -846,3 +846,241 @@ aside ul {
 	font-size: 28px;
 	display: none;
 }
+
+/*=================================*/
+/*======== New Group Page =========*/
+/*=================================*/
+
+#NewGroup {
+	position: relative;
+	margin: 90px auto 0 auto;
+	width: 400px;
+	background-color: #2980B9;
+	-webkit-box-shadow: 1px 1px 18px 6px rgb(224, 224, 224);
+	-moz-box-shadow:    1px 1px 18px 6px rgb(224, 224, 224);
+	box-shadow:         1px 1px 18px 6px rgb(224, 224, 224);
+}
+
+#NewGroupHead {
+	padding: 20px;
+	position: relative;
+	color: white;
+}
+
+#NewGroupHead h2 {
+	font-size: 25px;
+	margin: 0 0 5px 0;
+}
+
+#NewGroup p {
+	font-size: 15px;
+}
+
+#NewGroupForm {
+	background-color: white;
+	position: relative;
+	padding: 20px;
+}
+
+.step {
+	position: relative;
+	margin: 0 0 10px 0;
+}
+
+.step h3 {
+	display: block;
+	position: relative;
+	font-size: 17px;
+	margin: 0 0 10px 0;
+	color: #7D7D7D;
+}
+
+.NewGroupTextInput {
+	width: 353px;
+	height: 35px;
+	margin: 0 0 10px 0;
+	padding: 0 0 0 7px;
+	border: none;
+	-webkit-box-shadow: 1px 1px 10px 0px rgb(224, 224, 224);
+	-moz-box-shadow:    1px 1px 10px 0px rgb(224, 224, 224);
+	box-shadow:         1px 1px 10px 0px rgb(224, 224, 224);
+	font-family: Roboto;
+	font-size: 15px;
+	color: #475763;
+}
+
+#StartIconLabel {
+	position: relative;
+	font-size: 14px;
+	color: #7D7D7D;
+}
+
+#icon-selector {
+	margin: 10px 0 10px 0;
+	width: 350px;
+	padding-top: 14px;
+	padding-left: 10px;
+	padding-bottom: 2px;
+	-webkit-box-shadow: 1px 1px 10px 0px rgb(224, 224, 224);
+	-moz-box-shadow:    1px 1px 10px 0px rgb(224, 224, 224);
+	box-shadow:         1px 1px 10px 0px rgb(224, 224, 224);
+}
+
+#icon-selector input{
+    margin:0;
+    padding:0;
+    -webkit-appearance:none;
+       -moz-appearance:none;
+            appearance:none;
+}
+
+#icon-selector input:active +.icon-label{
+	color: #1F4D6B;
+}
+#icon-selector input:checked +.icon-label{
+    color: #1F4D6B;
+}
+.icon-label{
+    cursor: pointer;
+    font-size: 26px;
+    margin: 0 2px 9px 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    /*width: 20px;
+    height:20px;*/
+    -webkit-transition: all 100ms ease-in;
+       -moz-transition: all 100ms ease-in;
+            transition: all 100ms ease-in;
+    color: #D2D2D2;
+}
+.icon-label:hover{
+    color: #2980B9;
+}
+
+.step:nth-of-type(1) textarea {
+	width: 346px;
+	height: 30px;
+	margin: 0 0 10px 0;
+	padding: 7px;
+	border: none;
+	-webkit-box-shadow: 1px 1px 10px 0px rgb(224, 224, 224);
+	-moz-box-shadow:    1px 1px 10px 0px rgb(224, 224, 224);
+	box-shadow:         1px 1px 10px 0px rgb(224, 224, 224);
+	resize: horizontal;
+	font-size: 15px;
+	color: #475763;
+}
+
+#privacy {
+	display: inline-block;
+	position: relative;
+	margin: 10px 0 10px 85px;
+}
+
+input[type="radio"] {
+    display:none;
+}
+
+
+.privacy-label {
+    color: #292321;
+    font-family:Arial, sans-serif;
+    font-size:14px;
+    cursor:pointer;
+    margin: 0 30px 0 0;
+    color: #7D7D7D;
+}
+
+.privacy-label:hover > span {
+	background-color: #BFBFBF;
+}
+
+.privacy-label span {
+    display:inline-block;
+    width:19px;
+    height:19px;
+    margin:-1px 8px 0 0;
+    vertical-align:middle;
+    cursor:pointer;
+    -moz-border-radius:  50%;
+    border-radius:  50%;
+    background-color: #D6D6D6;
+}
+
+#privacy input:checked + label span {
+	background-color: #2980B9;
+}
+
+.privacy-label span, #privacy input:checked + label span {
+  -webkit-transition:background-color 0.2s linear;
+  -o-transition:background-color 0.2s linear;
+  -moz-transition:background-color 0.2s linear;
+  transition:background-color 0.2s linear;
+}
+
+#invite-label {
+	font-size: 13px;
+	color: #7D7D7D;
+	margin-bottom: 10px;
+	display: inline-block;
+	line-height: 14px;
+}
+
+.userInvite {
+	width: 353px;
+	height: 30px;
+	margin: 2px 0 0px 0;
+	padding: 0 0 0 7px;
+	border: none;
+	-webkit-box-shadow: 1px 1px 10px 0px rgb(224, 224, 224);
+	-moz-box-shadow:    1px 1px 10px 0px rgb(224, 224, 224);
+	box-shadow:         1px 1px 10px 0px rgb(224, 224, 224);
+	font-family: Roboto;
+}
+
+#addInvite {
+	width: 360px;
+	height: 26px;
+	background-color: rgb(241, 241, 241);
+	text-align: center;
+	font-size: 25px;
+	padding: 2px 0 0 0;
+	color: #B1B1B1;
+	margin: 15px 0 0 0;
+	-webkit-box-shadow: 1px 1px 10px 0px rgb(197, 197, 197);
+	-moz-box-shadow:    1px 1px 10px 0px rgb(197, 197, 197);
+	box-shadow:         1px 1px 10px 0px rgb(197, 197, 197);
+    -webkit-transition: all 200ms ease-out;
+       -moz-transition: all 200ms ease-out;
+            transition: all 200ms ease-out;
+}
+
+#addInvite:hover {
+	-webkit-box-shadow: 1px 1px 4px 0px rgb(197, 197, 197);
+	-moz-box-shadow:    1px 1px 4px 0px rgb(197, 197, 197);
+	box-shadow:         1px 1px 4px 0px rgb(197, 197, 197);	
+	background-color: rgb(228, 228, 228);
+	color: #929292;
+}
+
+#NewGroupForm input[type=submit] {
+	border: 0 none;
+	margin: 8px 0 0 0;
+	width: 360px;
+	height: 34px;
+	background-color: #2980B9;
+	-webkit-box-shadow: 1px 1px 20px 2px rgb(224, 224, 224);
+	-moz-box-shadow:    1px 1px 20px 2px rgb(224, 224, 224);
+	box-shadow:         1px 1px 20px 2px rgb(224, 224, 224);
+	color: white;
+	font-family: Roboto;
+	font-size: 17px;
+    -webkit-transition: all 200ms ease-out;
+       -moz-transition: all 200ms ease-out;
+            transition: all 200ms ease-out;
+}
+
+#NewGroupForm input[type=submit]:hover {
+	background-color: #0B9EFF;
+}

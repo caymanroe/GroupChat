@@ -79,7 +79,14 @@ $(document).ready(function() {
             searchGroups();
         }
     });
-    
+
+    $('#addInvite').click(function() {
+	    var currentId = $(this).prev().attr('name').substring(6);
+	    var newId = +currentId + 1;
+	    var newField = "<input class=\"userInvite\" type=\"text\" name=\"invite"+newId+"\" placeholder=\"Email Address\" />";
+	    $(newField).insertBefore("#addInvite").hide().slideDown();
+    });
+
 
 });
 
@@ -227,6 +234,4 @@ function searchGroups() {
 	} else {
 		alert("Search box is empty.")
 	}
-
-
 }
