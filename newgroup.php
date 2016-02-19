@@ -17,6 +17,33 @@
 			$userImage = $_SESSION['image'];
 		}
 	}
+
+	$GroupInvalid = "";
+
+	if (isset($_POST['invite0'])) {
+
+		$InviteList = array();
+		$t=0;
+		for ($i=0; $t==0; $i++) { 
+			if (isset($_POST['invite'.$i])) {
+				$InviteList[$i] = $_POST['invite'.$i];
+			} else {
+				$t=1;
+			}
+
+		}
+		
+		/*$Name = strip_tags($_POST['name']);
+		$Org = strip_tags($_POST['org']);
+		$Icon = strip_tags($_POST['icon']);
+		$Desc = strip_tags($_POST['desc']);
+		$Privacy = strip_tags($_POST['privacy']);
+		$Invite = strip_tags($_POST['name']);*/
+
+		$GroupInvalid = $output;
+	}
+
+	
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +83,7 @@
 				<p>You're just 3 steps away from creating your new online community!</p>
 			</div>
 
-			<form id="NewGroupForm" action="submit.php" method="post" accept-charset="UTF-8">
+			<form id="NewGroupForm" action="newgroup.php" method="post" accept-charset="UTF-8">
 				<div class="step">
 					<h3>Step 1 - Initial setup</h3>
 					<input class="NewGroupTextInput" type="text" name="name" placeholder="Group Name" />
@@ -156,11 +183,11 @@
 					<h3>Step 3 - Invite Users</h3>
 					<label id="invite-label">Invite users to this group by entering their email addresses below. The user doesn't have an account? No worries, we'll create their temporary account and invite them for you.</label>
 					<div id="inviteList">
-						<input class="userInvite" type="text" name="invite1" placeholder="Email Address" />
+						<input class="userInvite" type="text" name="invite0" placeholder="Email Address" />
 						<div id="addInvite"><i class="icon-add"></i></div>
 					</div>
 				</div>
-				<input
+				<p id="GroupInvalid"><?php echo $GroupInvalid; ?></p>
 				<input type="submit" value="Create Group"/>
 			</form>
 		</div>

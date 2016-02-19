@@ -872,10 +872,6 @@ aside ul {
 	margin: 0 0 5px 0;
 }
 
-#NewGroup p {
-	font-size: 15px;
-}
-
 #NewGroupForm {
 	background-color: white;
 	position: relative;
@@ -1066,7 +1062,7 @@ input[type="radio"] {
 
 #NewGroupForm input[type=submit] {
 	border: 0 none;
-	margin: 8px 0 0 0;
+	margin: 20px 0 0 0;
 	width: 360px;
 	height: 34px;
 	background-color: #2980B9;
@@ -1083,4 +1079,11 @@ input[type="radio"] {
 
 #NewGroupForm input[type=submit]:hover {
 	background-color: #0B9EFF;
+}
+
+#GroupInvalid {
+	position: absolute;
+	bottom: 60px;
+	font-size: 14px;
+	color: red;
 }
