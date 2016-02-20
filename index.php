@@ -77,6 +77,8 @@
 
 				if (isset($_POST['groupId'])) {
 					echo "<div id=\"display\" data-g=\"0\" data-h=\"".$_POST['groupId']."\"></div>";
+				} elseif (isset($_GET['groupId'])) {
+					echo "<div id=\"display\" data-g=\"0\" data-h=\"".$_GET['groupId']."\"></div>";
 				} else {
 					echo "<div id=\"display\" data-g=\"0\"></div>";
 				}

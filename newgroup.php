@@ -26,6 +26,9 @@
 
 	if (isset($_POST['name'])) {
 
+		//Create array for email invites.
+		$InviteList = array();
+
 		$Name = strip_tags($_POST['name']);
 		$Org = strip_tags($_POST['org']);
 		$Icon = strip_tags($_POST['icon']);
@@ -42,6 +45,8 @@
 		$InviteInvalid = 0;
 		$OrgInvalid = 0;
 		$DescInvalid = 0;
+
+		//Check and validate all fields
 
 		if ($Name != '') {
 			if (strlen($Name) <= 30){
@@ -75,45 +80,140 @@
 
 		//Check if first invite field has been filled out
 		if (isset($_POST['invite0']) && $_POST['invite0'] != '') {
-			//Create array
-			$InviteList = array();
 			$t=0;
+
 			//Keep looping through and storing all invite fields until one is left empty.
 			for ($i=0; $t==0; $i++) { 
-				//Check that field is not empty, if it is, set t=1 (breaking array)
+
+				//Check that field is not empty, if it is, set t=1 (breaking the loop)
 				if (isset($_POST['invite'.$i]) && $_POST['invite'.$i]!='') {
+
 					//Strip and prepare email addresses
 					$EmailInvite = strip_tags($_POST['invite'.$i]);
 					$EmailInvite = mysqli_real_escape_string($con, $EmailInvite);
+
 					//Check email is in correct format
 					if (filter_var($EmailInvite, FILTER_VALIDATE_EMAIL)) {
+
 						//Add entry to array
 						$InviteList[$i] = $EmailInvite;
 						//All Good
+
 					} else {
+
 						//If incorrect email format, set error message
 						$InviteError = "One or more of your email invites is not formatted correctly.";
 						$InviteInvalid = 1;
 					}
-				} else {$t=1;}
+
+				} else {
+					//Set t=1, meaning there are no more inputs to read from, breaking the loop
+					$t=1;
+				}
 			}
 		}
 
+	//If everything is valid.. Lets get to the nitty gritty...
 	if ($NameInvalid == 0 && $InviteInvalid == 0 && $OrgInvalid == 0 && $DescInvalid == 0) {
+
+		//Insert group details into group table as new entry
 		$sql = "INSERT INTO `group` (name, description, adminId, icon, org, private)
 		VALUES ('".$Name."','".$Desc."','".$_SESSION['uid']."','".$Icon."','".$Org."','".$Privacy."')";
 
 		if (mysqli_query($con, $sql)) {
+
+			//Get group ID from entry
 			$id = mysqli_insert_id($con);
-			$InviteError = "New group ID is ".$id;
+			$InviteError = "Success! New group ID is: ".$id;
+
+			//Insert member relationship for currnt user into database
 			$relsql = "INSERT INTO `groupmember` (userid, groupid) VALUES ('".$_SESSION['uid']."','".$id."')";
 			if (mysqli_query($con, $relsql)) {
-				//All Done
+
+				//Cycle through each invite entry
+				for ($i=0; $i < count($InviteList); $i++) { 
+
+					//Check if invitee already as an account
+					$sql=mysqli_query($con, "SELECT email FROM `user` WHERE email='".$InviteList[$i]."'");
+					if (mysqli_num_rows($sql) == 0) {
+
+						//If user doesn't exist...
+						//Generate random 11 character code for invitee to use to validate
+						$randVerify = substr(md5(microtime()),rand(0,26),11);
+	
+						//Insert new users into database with 'half created accounts'
+						$invitesql = "INSERT INTO `user` (email, activated, verify) VALUES ('".$InviteList[$i]."','0', '".$randVerify."')";
+						if (mysqli_query($con, $invitesql)) {
+	
+							//Get new user (invitee) ID
+							$NewUid = mysqli_insert_id($con);
+	
+							//Insert remlationship for new user to be a member of the new group
+							$relsql2 = "INSERT INTO `groupmember` (userid, groupid) VALUES ('".$NewUid."','".$id."')";
+							mysqli_query($con, $relsql2);
+	
+							//Set up email variables
+							$to = $InviteList[$i];
+							$subject = "Groupchat Invite";
+							$url = "http://gchat.co/newinvite.php?verify=".$randVerify."&address=".$to;
+							$GroupAdminName = $_SESSION['fName']." ".$_SESSION['lName'];
+							
+							//Email body
+							$email_body = 	"<h2>You have been invited to Groupchat!</h2>
+											<p>Hi there, you have been invited to '".$Name."' by ".$GroupAdminName.".</p>
+											<p>To accept this invitation and complete your account creation, follow the link below.</p>
+											<p>The link will expire in 24 hours.</p>
+											<a rel=\"nofollow\" href=\"".$url."\">gchat.co/newinvite.php?[Masked]</a>";
+							
+							//Complete email
+							$message = "<html><head></head><body><centre>".$email_body."</centre></body></html>";
+	
+							//Adding headers to set content type and from address
+							$headers = 'Content-type: text/html; charset=iso-8859-1' . "\r\n" .
+								'From: donotreply@gchat.co' . "\r\n" .
+							   'Reply-To: donotreply@gchat.co' . "\r\n" .
+							   'X-Mailer: PHP/' . phpversion();
+							
+							//Send email
+							mail($to, $subject, $message, $headers);
+	
+							//Redirect to new group
+							header("Location: index.php?groupId=".$id."");
+	
+						} else {
+							//If could not insert new users
+							$InviteError = "Your group was created, but there was an issue inviting users. Please try again, or ask them to join manually.";
+						}
+					} else {
+
+						//Username already exists, so need to get that user ID
+						$result=mysqli_query($con, "SELECT uid FROM `user` WHERE email='".$InviteList[$i]."'");
+						while ($row = mysqli_fetch_array($result)) {
+							
+							//Check if relationship already exists between group and new invitee
+							$sql=mysql_query("SELECT * FROM `groupmember` WHERE userid = '".$row['uid']."' AND groupid = '".$id."'");
+							if (mysqli_num_rows($sql) == 0) {
+								
+								//If there is no relationship, we need to add one.
+								//Insert remlationship for new user to be a member of the new group
+								$relsql2 = "INSERT INTO `groupmember` (userid, groupid) VALUES ('".$row['uid']."','".$id."')	";
+								mysqli_query($con, $relsql2);
+
+							} else {
+								//If relationship exists, do nothing. User is already a member.
+							}
+
+						}
+					}
+				}
+
 			} else {
+				//If could not assign user as member of database
 				$InviteError = "There was an error processing your request. Please try again in a few minutes.";
 			}
 			
 		} else {
+			//If could not insert new group
 			$InviteError = "There was an error processing your request. Please try again in a few minutes.";
 		}
 	}
