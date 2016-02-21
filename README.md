@@ -9,4 +9,4 @@ Group administrators can invite other users to join a group. If a group is set t
 
 **Demo: [gchat.co](http://gchat.co)** (May not be updated to reflect current master)
 
-![alt tag](https://raw.githubusercontent.com/caymanroe/GroupChat/Create-Group-Function/css/images/Dashboard.jpg)
+![alt tag](https://raw.githubusercontent.com/caymanroe/GroupChat/master/css/images/Dashboard.jpg)
