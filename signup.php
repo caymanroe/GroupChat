@@ -143,7 +143,7 @@
 					
 					}
 					else {
-					    $invalid = "If you see this message, serious shit just happened in the code and your account is probably fucked beyond belief. I would recommend creating a new one with a different username and password. If you still have trouble, contact me at caymanroe@gmail.com";
+					    $invalid = "A serious error has occured. Please try again later.";
 					}
 				}
 				
@@ -240,7 +240,7 @@ function scaleImage($source, $max_width, $max_height, $destination) {
 					<p id="invalid"> <?php echo $invalid; ?></p>
 				</form>
 				<p id="login_link">Already have an account? <a href="login.php">Log in</a></p>
-				<p id="terms">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dapibus sit amet augue eget euismod. Nulla molestie convallis ex, eget ullamcorper sem placerat nec. Integer non auctor ante, a tempor felis. Donec egestas neque non arcu commodo, sit amet dignissim tortor iaculis.</p>
+				<p id="terms">This website is currently under alpha status. By signing up you agree not to share sensitive data, as security and privacy may be compromised due to exploits in the application code. Groupchat cannot be held liable for loss of data or manipulation of content by outside entities. This site is in a testing state only.</p>
 			</div>
 		</div>
 

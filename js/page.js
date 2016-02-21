@@ -2,7 +2,6 @@ $(document).ready(function() {
     $("#groupbar li a").click(function() {
 	    	var groupid = $(this).attr("id");
 				 
-        $("#display").empty();
         $("#display").promise().done(function() {
 				        
 	        $.ajax({
@@ -13,7 +12,15 @@ $(document).ready(function() {
 					group:groupid
 				},
 				success: function(response) {
-					$("#display").empty().append(response);
+					$("#display").children().fadeOut({duration:60, complete: function(){
+						$("#display").empty().append(response).hide().fadeIn(60);
+					}});
+					/*$("#display").children().hide('slide',{direction:'left',duration: 100});
+					$("#display").delay(50).append(response);
+					.hide('slide',{direction:'left'},100).fadeOut();
+					
+
+					$(loading).delay(1000).hide('slide',{direction:'left'},200);*/
 				}
 			});
 		});
@@ -22,7 +29,6 @@ $(document).ready(function() {
 
     $("#feedbutton").click(function() {
 				 
-        $("#display").empty();
         $("#display").promise().done(function() {
 				        
 	        $.ajax({
@@ -30,7 +36,10 @@ $(document).ready(function() {
 				url: 'loadfeedall.php',
 				datatype: "html",
 				success: function(response) {
-					$("#display").empty().append(response);
+					//$("#display").empty().append(response);
+					$("#display").children().fadeOut({duration:60, complete: function(){
+						$("#display").empty().append(response).hide().fadeIn(60);
+					}});
 				}
 			});
 		});
@@ -45,6 +54,7 @@ $(document).ready(function() {
 		form.submit();
     });
 
+    //Auto load a group into view if ID was supplied to index.php
     var attr = $('#display').attr('data-h');
 	if (typeof attr !== typeof undefined && attr !== false) {
 	    $.ajax({
@@ -79,7 +89,14 @@ $(document).ready(function() {
             searchGroups();
         }
     });
-    
+
+    $('#addInvite').click(function() {
+	    var currentId = $(this).prev().attr('name').substring(6);
+	    var newId = +currentId + 1;
+	    var newField = "<input class=\"userInvite\" type=\"text\" name=\"invite"+newId+"\" placeholder=\"Email Address\" />";
+	    $(newField).insertBefore("#addInvite").hide().slideDown();
+    });
+
 
 });
 
@@ -227,6 +244,4 @@ function searchGroups() {
 	} else {
 		alert("Search box is empty.")
 	}
-
-
 }

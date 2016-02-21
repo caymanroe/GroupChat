@@ -1,7 +1,7 @@
 <?php
 
 function listGroups($userId, $con) {
-	$selectGroupId = mysqli_query($con, "SELECT groupid FROM groupmember WHERE userid=".$userId." LIMIT 10");
+	$selectGroupId = mysqli_query($con, "SELECT groupid FROM groupmember WHERE userid=".$userId."");
 
 	while ($row = mysqli_fetch_array($selectGroupId)) {
 

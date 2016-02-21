@@ -27,6 +27,7 @@
 		<link rel="stylesheet" type="text/css" href="css/fontello.css">
 		<link rel="stylesheet" type="text/css" href="css/roboto.css">
 		<script src="js/jquery-2.1.4.js"></script>
+		<script src="js/jquery-ui-1.11.4/jquery-ui.min.js"></script>
 		<script src="js/page.js"></script>
 
 	</head>
@@ -55,7 +56,7 @@
 			<aside>
 				<ul>
 					<li><a id="feedbutton" class="listoption" href="#Feed"><i class="icon-feed"></i><span>Feed</span></a></li>
-					<li><a class="listoption" href="#NewGroup"><i class="icon-add"></i><span>New Group</span></a></li>
+					<li><a class="listoption" href="newgroup.php"><i class="icon-add"></i><span>New Group</span></a></li>
 					
 					<li>
 						<ul id="groupbar" class="listcontainer">
@@ -77,6 +78,8 @@
 
 				if (isset($_POST['groupId'])) {
 					echo "<div id=\"display\" data-g=\"0\" data-h=\"".$_POST['groupId']."\"></div>";
+				} elseif (isset($_GET['groupId'])) {
+					echo "<div id=\"display\" data-g=\"0\" data-h=\"".$_GET['groupId']."\"></div>";
 				} else {
 					echo "<div id=\"display\" data-g=\"0\"></div>";
 				}
