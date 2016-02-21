@@ -112,7 +112,7 @@
 										header("Location: index.php");
 									}
 									else {
-							    		$invalid = "Error writing user to database.";
+							    		$invalid = "A serious error has occured. Please try again later. Code: 12";
 									}
 
 								}
@@ -134,7 +134,7 @@
 									header("Location: index.php");
 								}
 								else {
-						    		$invalid = "Error writing user to database.";
+						    		$invalid = "A serious error has occured. Please try again later. Code: 11";
 								}
 						    
 							}
@@ -143,20 +143,20 @@
 					
 					}
 					else {
-					    $invalid = "A serious error has occured. Please try again later.";
+					    $invalid = "A serious error has occured. Please try again later. Code: 10";
 					}
 				}
 				
 				else {
 				    
-					$invalid = "Username already exists.";
+					$invalid = "This email address is already registered.";
 				} 	
 				
 			}
 
 		}
 		else {
-			$invalid = "Passwords do not match.";
+			$invalid = "Please ensure your passwords match and try again.";
 		}
 	}
 

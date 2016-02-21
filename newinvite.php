@@ -177,7 +177,7 @@
 									header("Location: index.php");
 								}
 								else {
-							    	$invalid = "Error writing user to database.";
+							    	$invalid = "A serious error has occured. Please try again later. Code: 12";
 								}
 
 							}
@@ -206,7 +206,8 @@
 								header("Location: index.php");
 							}
 							else {
-						   		$invalid = "Error writing user to database.";
+								//If the Update query failed...
+						   		$invalid = "A serious error has occured. Please try again later. Code: 11";
 							}
 						    
 						}
@@ -215,7 +216,8 @@
 					
 				}
 				else {
-					$invalid = "A serious error has occured. Error code: 'HASHING'";
+					//If the password hashing failed...
+					$invalid = "A serious error has occured. Please try again later. Code: 10";
 				}
 					
 				
@@ -223,11 +225,12 @@
 
 		}
 		else {
+			//If passwords do not match...
 			$invalid = "Please ensure your passwords match.";
 		}
 	}
 
-//Not using this yet...
+//Not using this anymore...
 function scaleImage($source, $max_width, $max_height, $destination) {
     list($width, $height) = getimagesize($source);
     if ($width > 150 || $height > 150) {
@@ -314,6 +317,7 @@ function scaleImage($source, $max_width, $max_height, $destination) {
 			</div>
 		</div>
 
+		<!--File browser when click on input for profile picture-->
 		<script type="text/javascript">
 			function getFile(){
         		document.getElementById("file").click();
