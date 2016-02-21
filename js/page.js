@@ -245,3 +245,39 @@ function searchGroups() {
 		alert("Search box is empty.")
 	}
 }
+
+$(document).on("click","#notifications",function() {
+	if ($('#notify_dropdown').css('display') == 'none') {
+
+    	$.ajax({
+    		type:'post',
+    		url: 'submit.php',
+    		data: {
+    			action:'checknotifications'
+    		},
+    		success: function (response) {
+    			$('#notify_dropdown').css('display', 'block').prepend(response);
+    		}
+    	})
+
+		//$('#notify_dropdown').css('display', 'block');
+	} else {
+		$('#notify_dropdown').css('display', 'none');
+		$('.notify').remove();
+	}
+});
+
+$(document).on("click",".notify",function() {
+	var relid = $(this).attr('id');
+
+    $.ajax({
+    	type:'post',
+    	url: 'submit.php',
+    	data: {
+    		action:'changeseen',
+    		relid:relid
+    	},
+    	success: function (response) {
+    	}
+    })
+});

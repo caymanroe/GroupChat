@@ -12,6 +12,10 @@ if(isset($_POST['action']) && !empty($_POST['action'])) {
 		case 'removepost' : removePost($con, $_POST['postId']);break;
 		case 'removecomment' : removeComment($con, $_POST['commentId']);break;
 		case 'joingroup' : joinGroup($con, $_POST['groupId']);break;
+		case 'checknotifications' : checknotifications($con);break;
+		case 'changeseen' : changeseen($con, $_POST['relid']);break;
+		case 'clearnotif' : clearnotif($con);break;
+		
 	}
 }	
 
@@ -104,6 +108,41 @@ function joingroup($con, $group) {
 		} else {
 			echo "Error: " . $sql . "<br>" . mysqli_error($con);
 		}
+	}
+}
+
+function checknotifications($con) {
+
+	//Find all unseen group memberships
+	$notifResult = mysqli_query($con, "SELECT groupid, id FROM `groupmember` WHERE userid='".$_SESSION['uid']."' AND seen='0'");
+	while ($rowNotif = mysqli_fetch_array($notifResult)) {
+
+		//Get the group name and admin ID for each group
+		$groupResult = mysqli_query($con, "SELECT adminId, name FROM `group` WHERE groupId='".$rowNotif['groupid']."' LIMIT 1");
+		while ($rowGroup = mysqli_fetch_array($groupResult)) {
+			
+			//Get the admin name for the invite
+			$adminResult = mysqli_query($con, "SELECT fname, lname FROM `user` WHERE uid='".$rowGroup['adminId']."' LIMIT 1");
+			while ($rowAdmin = mysqli_fetch_array($adminResult)) {
+				if ($_SESSION['uid'] == $rowGroup['adminId']) {
+					echo "<a class=\"notify\" id=\"".$rowNotif['id']."\" href=\"index.php?groupId=".$rowNotif['groupid']."\">You have created the group <span>".$rowGroup['name']."</span></a>";
+				} else {
+					echo "<a class=\"notify\" id=\"".$rowNotif['id']."\" href=\"index.php?groupId=".$rowNotif['groupid']."\">".$rowAdmin['fname']." ".$rowAdmin['lname']." added you to <span>".$rowGroup['name']."</span></a>";
+				}
+			}
+		}
+	}
+}
+
+function changeseen($con, $relid) {
+	$sql = "UPDATE groupmember SET seen = '1' WHERE id = '".$relid."'";
+	mysqli_query($con, $sql);
+}
+
+function clearnotif($con) {
+	$seenResult = mysqli_query($con, "SELECT * FROM `groupmember` WHERE userid='".$_SESSION['uid']."' AND seen='0'");
+	while ( <= 10) {
+		# code...
 	}
 }
 

@@ -227,6 +227,18 @@
       "css": "marketing",
       "code": 59398,
       "src": "entypo"
+    },
+    {
+      "uid": "e36d581e4f2844db345bddc205d15dda",
+      "css": "group",
+      "code": 59429,
+      "src": "elusive"
+    },
+    {
+      "uid": "8d40bca7a7f11091ca865e07535fcc47",
+      "css": "group-circled",
+      "code": 59430,
+      "src": "elusive"
     }
   ]
 }

@@ -126,6 +126,7 @@
 									header("Location: index.php");
 								}
 								else {
+									//If the update query failed...
 							    	$invalid = "A serious error has occured. Please try again later. Code: 12";
 								}
 

@@ -189,6 +189,44 @@ header ul li {
 	left: 4px;
 }
 
+#notify_dropdown {
+	position: absolute;
+	top: 46px;
+	border: 4px solid #CFD8DE;
+	left: -12px;
+	width: 300px;
+	background-color: #FFFFFF;
+	display: none;
+}
+
+#notify_dropdown a {
+	color: black;
+	display: block;
+	font-size: 12px;
+	height: 25px;
+	position: relative;
+	border-bottom: 2px solid #E1E4E6;
+	padding: 10px 0 0 10px;
+	text-align: left;
+}
+
+#clearNotif {
+
+}
+
+#notify_dropdown a:last-of-type {
+	border-bottom: none;
+	text-align: center;
+	color: #6F9BB7;
+}
+
+#notify_dropdown a span {
+	font-size: 14px;
+	font-weight: bold;
+	color: black;
+	margin: 0 0 0 2px;
+}
+
 #name {
 	width: 185px;
 	position: relative;
