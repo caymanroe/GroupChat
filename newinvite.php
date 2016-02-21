@@ -157,7 +157,6 @@
 								unlink($pathToImage);
 								
 								//Update user info including image and complete account creation.
-								//$sql = "INSERT INTO user (email, hash, fname, lname, image) VALUES ('".$newEmail."', '".$hash."', '".$newFirstname."', '".$newLastname."', '".$temp_filename."')";
 								$sql = "UPDATE user SET hash = '".$hash."'
 														, fname = '".$newFirstname."'
 														, lname = '".$newLastname."'
@@ -177,6 +176,7 @@
 									header("Location: index.php");
 								}
 								else {
+									//If the Update query failed...
 							    	$invalid = "A serious error has occured. Please try again later. Code: 12";
 								}
 
@@ -187,7 +187,6 @@
 						else {
 
 							//Update user info without image and complete account creation.
-							//$sql = "INSERT INTO user (email, hash, fname, lname) VALUES ('".$newEmail."', '".$hash."', '".$newFirstname."', '".$newLastname."')";
 							$sql = "UPDATE user SET hash = '".$hash."'
 													, fname = '".$newFirstname."'
 													, lname = '".$newLastname."' 

@@ -3,14 +3,17 @@
 	//include db.php to use $con
 	include 'db.php';
 
+	session_start();
+
+	//If user is already logged in with an active account, reset current session.
 	if (isset($_SESSION['uid'])) {
 		session_destroy();
+		session_start();
 	}
-	session_start();
 
 	$invalid = "";
 
-	//If the username gets posted from logging in, run this.
+	//If the username gets posted from logging in, run this. (When the form is submitted)
 	if (isset($_POST['firstname'])) {
 
 
@@ -28,102 +31,90 @@
 		$newPassword = mysqli_real_escape_string($con, $newPassword);
 		$newPassword2 = mysqli_real_escape_string($con, $newPassword2);
 
+		//If passwords match, continue...
 		if ($newPassword == $newPassword2) {
 			
+			//If any fields are blank, show error. Else, continue...
 			if ($newFirstname == "" || $newLastname == "" || $newEmail == "" || $newPassword == "" || $newPassword2 == "") {
 				$invalid = "Don't leave any blanks.";
 			}
 
 			else {
+
+				//Check is email already exists by querying the database..
 				$sql=mysqli_query($con, "SELECT uid FROM user WHERE email = '".$newEmail."'") or die(mysqli_error($con));
-				
 				if(mysqli_num_rows($sql) == 0) {
 				    
+				    //Convert names to uppercase
 					$newFirstname = ucwords($newFirstname);
 					$newLastname = ucwords($newLastname);
 
+					//Hash password
 					$options = array('cost' => 13);
 					$hash = password_hash($newPassword, PASSWORD_BCRYPT, $options);
 
-
+					//If password was hashed correctly, continue...
 					if (password_verify($newPassword, $hash)) {
+
 	    				$hash = mysqli_real_escape_string($con, $hash);
 
-							if(isset($_FILES['file']) && $_FILES['file']['name'] != ''){
-								
-								$allowed =  array('jpeg','jpg');
-								$filename = $_FILES['file']['name'];
-								$ext = pathinfo($filename, PATHINFO_EXTENSION);
-								
-								if(!in_array($ext,$allowed) ) {
-    								$invalid = "Images must be in JPEG format.";
-								}
-								else {
-
-									$length = 20;
-									$randomString = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
-									$temp_filename = $randomString.".jpg";
-
-									$pathToImage = "css/images/temp/".$temp_filename;
-									move_uploaded_file($_FILES['file']['tmp_name'], $pathToImage);
-									//header("Location: index.php");
-									
-
-									//Your Image
-									$imgSrc = $pathToImage;
-
-									//getting the image dimensions
-									list($width, $height) = getimagesize($imgSrc);
-
-									//saving the image into memory (for manipulation with GD Library)
-									$myImage = imagecreatefromjpeg($imgSrc);
-
-									// calculating the part of the image to use for thumbnail
-									if ($width > $height) {
-									  $y = 0;
-									  $x = ($width - $height) / 2;
-									  $smallestSide = $height;
-									} else {
-									  $x = 0;
-									  $y = ($height - $width) / 2;
-									  $smallestSide = $width;
-									}
-
-									// copying the part into thumbnail
-									$thumbSize = 50;
-									$thumb = imagecreatetruecolor($thumbSize, $thumbSize);
-									imagecopyresampled($thumb, $myImage, 0, 0, $x, $y, $thumbSize, $thumbSize, $smallestSide, $smallestSide);
-
-									//final output
-									imagejpeg($thumb, 'css/images/profile/'.$temp_filename);
-									unlink($pathToImage);
-									
-									$sql = "INSERT INTO user (email, hash, fname, lname, image) VALUES ('".$newEmail."', '".$hash."', '".$newFirstname."', '".$newLastname."', '".$temp_filename."')";
-									if (mysqli_query($con, $sql)) {
-										
-										$result = mysqli_query($con, "SELECT uid FROM user WHERE email='".$newEmail."' LIMIT 1");
-										$row = mysqli_fetch_assoc($result);
-										$_SESSION['uid'] = $row['uid'];
-										$_SESSION['fName'] = $newFirstname;
-										$_SESSION['lName'] = $newLastname;
-										$_SESSION['activated'] = 1;
-										$_SESSION['lastLogin'] = "";
-										$_SESSION['image'] = $temp_filename;
-										header("Location: index.php");
-									}
-									else {
-							    		$invalid = "A serious error has occured. Please try again later. Code: 12";
-									}
-
-								}
-
+	    				//If profile picture was selected, do stuff... else, bypass..
+						if(isset($_FILES['file']) && $_FILES['file']['name'] != ''){
+							
+							//Defining required variables
+							$allowed =  array('jpeg','jpg');
+							$filename = $_FILES['file']['name'];
+							$ext = pathinfo($filename, PATHINFO_EXTENSION);
+							
+							//Check if file is a jpeg
+							if(!in_array($ext,$allowed) ) {
+    							$invalid = "Images must be in JPEG format.";
 							}
-
 							else {
 
-								$sql = "INSERT INTO user (email, hash, fname, lname) VALUES ('".$newEmail."', '".$hash."', '".$newFirstname."', '".$newLastname."')";
+								//Set profile picture name to random string of 20 characters
+								$length = 20;
+								$randomString = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
+								$temp_filename = $randomString.".jpg";
+
+								//Move uploaded picture to temp folder for compression and resizing to be performed
+								$pathToImage = "css/images/temp/".$temp_filename;
+								move_uploaded_file($_FILES['file']['tmp_name'], $pathToImage);
+									
+								//Setting source
+								$imgSrc = $pathToImage;
+
+								//Getting the image dimensions
+								list($width, $height) = getimagesize($imgSrc);
+
+								//Saving the image into memory (for manipulation with GD Library)
+								$myImage = imagecreatefromjpeg($imgSrc);
+
+								//Calculating the part of the image to use for thumbnail
+								if ($width > $height) {
+									$y = 0;
+									$x = ($width - $height) / 2;
+									$smallestSide = $height;
+								} else {
+									$x = 0;
+									$y = ($height - $width) / 2;
+									$smallestSide = $width;
+								}
+
+								//Copying the part into thumbnail
+								$thumbSize = 50;
+								$thumb = imagecreatetruecolor($thumbSize, $thumbSize);
+								imagecopyresampled($thumb, $myImage, 0, 0, $x, $y, $thumbSize, $thumbSize, $smallestSide, $smallestSide);
+
+								//Final output
+								imagejpeg($thumb, 'css/images/profile/'.$temp_filename);
+								unlink($pathToImage);
+								
+								//Insert user info including image and complete account creation.
+								$sql = "INSERT INTO user (email, hash, fname, lname, image) VALUES ('".$newEmail."', '".$hash."', '".$newFirstname."', '".$newLastname."', '".$temp_filename."')";
 								if (mysqli_query($con, $sql)) {
 									
+									//Verify user exists and set up session variables
 									$result = mysqli_query($con, "SELECT uid FROM user WHERE email='".$newEmail."' LIMIT 1");
 									$row = mysqli_fetch_assoc($result);
 									$_SESSION['uid'] = $row['uid'];
@@ -131,24 +122,50 @@
 									$_SESSION['lName'] = $newLastname;
 									$_SESSION['activated'] = 1;
 									$_SESSION['lastLogin'] = "";
+									$_SESSION['image'] = $temp_filename;
 									header("Location: index.php");
 								}
 								else {
-						    		$invalid = "A serious error has occured. Please try again later. Code: 11";
+							    	$invalid = "A serious error has occured. Please try again later. Code: 12";
 								}
-						    
+
 							}
+
+						}
+
+						else {
+							//If no profile picture has been selected...
+							$sql = "INSERT INTO user (email, hash, fname, lname) VALUES ('".$newEmail."', '".$hash."', '".$newFirstname."', '".$newLastname."')";
+							if (mysqli_query($con, $sql)) {
+								
+								//Verify user exists and set up session variables
+								$result = mysqli_query($con, "SELECT uid FROM user WHERE email='".$newEmail."' LIMIT 1");
+								$row = mysqli_fetch_assoc($result);
+								$_SESSION['uid'] = $row['uid'];
+								$_SESSION['fName'] = $newFirstname;
+								$_SESSION['lName'] = $newLastname;
+								$_SESSION['activated'] = 1;
+								$_SESSION['lastLogin'] = "";
+								header("Location: index.php");
+							}
+							else {
+								//If the Update query failed...
+						    	$invalid = "A serious error has occured. Please try again later. Code: 11";
+							}
+						    
+						}
 
 
 					
 					}
 					else {
+						//If the password hashing failed...
 					    $invalid = "A serious error has occured. Please try again later. Code: 10";
 					}
 				}
 				
 				else {
-				    
+				    //If email already exists
 					$invalid = "This email address is already registered.";
 				} 	
 				
@@ -156,6 +173,7 @@
 
 		}
 		else {
+			//If passwords do not match...
 			$invalid = "Please ensure your passwords match and try again.";
 		}
 	}
@@ -234,7 +252,7 @@ function scaleImage($source, $max_width, $max_height, $destination) {
 					<input type="password" name="password" id="password_signup" class="signup_input" placeholder="Password">
 					<input type="password" name="password2" id="password2_signup" class="signup_input" placeholder="Password">
 					<div id="file_cover" onclick="getFile()">Profile Picture</div>
-					<p id="pic_info">Optional. Make sure your face fills most of the frame, as this picture will get squished into a small thumbnail.</p>
+					<p id="pic_info">Optional. Make sure your image subject (your face!) fills most of the frame, as this picture will get compressed into a small thumbnail.</p>
 					<div style='height: 0px;width:0px; overflow:hidden;'><input id="file" type="file" name="file"/></div>
 					<input type="submit" value="Sign up" name="signup_submit" id="signup_submit">
 					<p id="invalid"> <?php echo $invalid; ?></p>
