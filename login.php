@@ -1,8 +1,13 @@
 <?php
-
 	session_start();
+
+	if (session_status() != PHP_SESSION_NONE) {
+	    session_destroy();
+	    session_start();
+	}
+	
 	$wrong = "";
-	if (isset($_POST['email'])) {
+	if (isset($_POST['email']) && isset($_POST['password']) && $_POST['password'] != "") {
 		include 'db.php';
 
 		$email = strip_tags($_POST['email']);

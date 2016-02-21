@@ -662,6 +662,24 @@ aside ul {
 	font-size: 48px;
 	text-align: center;
 	margin: 0 0 20px 0;
+	font-weight: bold;
+}
+
+#prefix {
+	text-align: center;
+	font-size: 40px;
+	margin: -15px 0 5px 0;
+}
+
+#postfix {
+	text-align: center;
+	margin: 0 0 20px 0;
+}
+
+#signup_box h3 {
+	font-size: 15px;
+	margin: 0 0 20px 0;
+	line-height: 18px;
 }
 
 .signup_input {
