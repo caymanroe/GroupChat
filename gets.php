@@ -18,7 +18,7 @@ function listGroups($userId, $con) {
 				echo "<li><a id=\"\" class=\"listoption\" href=\"#\"><span>No Groups</span></a></li>";
 			}
 			else {
-				echo "<li><a id=\"".$row['groupid']."\" class=\"listoption\" href=\"#".$groupName."\"><i class=\"".$groupIcon."\"></i><span>".$groupName."</span></a></li>";
+				echo "<li><a id=\"".$row['groupid']."\" class=\"listoption group-not-sticky\" href=\"#".$groupName."\"><i class=\"".$groupIcon."\"></i><span>".$groupName."</span></a></li>";
 			}
 		}
 

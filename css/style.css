@@ -200,7 +200,7 @@ header ul li {
 }
 
 #notify_dropdown a {
-	color: black;
+	color: #695763;
 	display: block;
 	font-size: 12px;
 	height: 25px;
@@ -210,8 +210,15 @@ header ul li {
 	text-align: left;
 }
 
-#clearNotif {
-
+#ClearNotifications, #NoNotifications {
+	color: #695763;
+	display: block;
+	font-size: 12px;
+	height: 25px;
+	position: relative;
+	border-bottom: 2px solid #E1E4E6;
+	padding: 10px 0 0 10px;
+	text-align: left;
 }
 
 #notify_dropdown a:last-of-type {
@@ -223,7 +230,7 @@ header ul li {
 #notify_dropdown a span {
 	font-size: 14px;
 	font-weight: bold;
-	color: black;
+	color: #475763;
 	margin: 0 0 0 2px;
 }
 
@@ -321,7 +328,7 @@ aside ul {
 	position: relative;
 }
 
-.listoption:hover {
+.listoption:hover{
 	background-color: #f3f6f8;
 }
 
@@ -347,6 +354,22 @@ aside ul {
 	color: #475763;
 	font-weight: 400;
 	float: left;
+}
+
+.group-is-sticky {
+	background-color: #89BCDE;
+}
+
+.group-is-sticky:hover {
+	background-color: #89BCDE;
+}
+
+.group-is-sticky i, .group-is-sticky span {
+	color: #FFFFFF;
+}
+
+.group-is-sticky:hover > span, .group-is-sticky:hover > i  {
+	color: #FFFFFF;
 }
 
 .sidebar-heading {

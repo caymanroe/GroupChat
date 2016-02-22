@@ -115,22 +115,28 @@ function checknotifications($con) {
 
 	//Find all unseen group memberships
 	$notifResult = mysqli_query($con, "SELECT groupid, id FROM `groupmember` WHERE userid='".$_SESSION['uid']."' AND seen='0'");
-	while ($rowNotif = mysqli_fetch_array($notifResult)) {
+	if (mysqli_num_rows($notifResult) == 0) {
+		echo "<p id=\"NoNotifications\">You have no notifications!</p>";
+	} else {
 
-		//Get the group name and admin ID for each group
-		$groupResult = mysqli_query($con, "SELECT adminId, name FROM `group` WHERE groupId='".$rowNotif['groupid']."' LIMIT 1");
-		while ($rowGroup = mysqli_fetch_array($groupResult)) {
-			
-			//Get the admin name for the invite
-			$adminResult = mysqli_query($con, "SELECT fname, lname FROM `user` WHERE uid='".$rowGroup['adminId']."' LIMIT 1");
-			while ($rowAdmin = mysqli_fetch_array($adminResult)) {
-				if ($_SESSION['uid'] == $rowGroup['adminId']) {
-					echo "<a class=\"notify\" id=\"".$rowNotif['id']."\" href=\"index.php?groupId=".$rowNotif['groupid']."\">You have created the group <span>".$rowGroup['name']."</span></a>";
-				} else {
-					echo "<a class=\"notify\" id=\"".$rowNotif['id']."\" href=\"index.php?groupId=".$rowNotif['groupid']."\">".$rowAdmin['fname']." ".$rowAdmin['lname']." added you to <span>".$rowGroup['name']."</span></a>";
+		while ($rowNotif = mysqli_fetch_array($notifResult)) {
+
+			//Get the group name and admin ID for each group
+			$groupResult = mysqli_query($con, "SELECT adminId, name FROM `group` WHERE groupId='".$rowNotif['groupid']."' LIMIT 1");
+			while ($rowGroup = mysqli_fetch_array($groupResult)) {
+				
+				//Get the admin name for the invite
+				$adminResult = mysqli_query($con, "SELECT fname, lname FROM `user` WHERE uid='".$rowGroup['adminId']."' LIMIT 1");
+				while ($rowAdmin = mysqli_fetch_array($adminResult)) {
+					if ($_SESSION['uid'] == $rowGroup['adminId']) {
+						echo "<a class=\"notify\" id=\"".$rowNotif['id']."\" href=\"index.php?groupId=".$rowNotif['groupid']."\">You have created the group <span>".$rowGroup['name']."</span></a>";
+					} else {
+						echo "<a class=\"notify\" id=\"".$rowNotif['id']."\" href=\"index.php?groupId=".$rowNotif['groupid']."\">".$rowAdmin['fname']." ".$rowAdmin['lname']." added you to <span>".$rowGroup['name']."</span></a>";
+					}
 				}
 			}
 		}
+		echo "<a id=\"clearNotifications\" href=\"#\">Clear all</a>";
 	}
 }
 
@@ -140,9 +146,11 @@ function changeseen($con, $relid) {
 }
 
 function clearnotif($con) {
+	//echo "Test";
 	$seenResult = mysqli_query($con, "SELECT * FROM `groupmember` WHERE userid='".$_SESSION['uid']."' AND seen='0'");
-	while ( <= 10) {
-		# code...
+	while ($rowSeen = mysqli_fetch_array($seenResult)) {
+		$sqlSeen = "UPDATE `groupmember` SET seen = '1' WHERE id = '".$rowSeen['id']."'";
+		mysqli_query($con, $sqlSeen);
 	}
 }
 
