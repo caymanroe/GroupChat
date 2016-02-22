@@ -1,8 +1,8 @@
 $(document).ready(function() {
 	//$('#groupbar li a:hover').css('background-color', 'black');
     $("#groupbar li a").click(function() {
-    	$('.group-is-sticky').removeClass('group-is-sticky');
-    	$(this).addClass('group-is-sticky');
+    	$('.group-is-sticky').removeClass('group-is-sticky', 100);
+    	$(this).addClass('group-is-sticky', 100);
     	//$('#groupbar li a').css('background-color', '#E6EEF3');
     	//$(this).css('background-color', '#5BA4D4');
 	    	var groupid = $(this).attr("id");
@@ -29,8 +29,8 @@ $(document).ready(function() {
     });
 
     $("#feedbutton").click(function() {
-    	$('.group-is-sticky').removeClass('group-is-sticky');
-    	$(this).addClass('group-is-sticky');
+    	$('.group-is-sticky').removeClass('group-is-sticky', 100);
+    	$(this).addClass('group-is-sticky', 100);
 				 
         $("#display").promise().done(function() {
 				        
@@ -69,7 +69,7 @@ $(document).ready(function() {
 			success: function(response) {
 				$("#display").empty().append(response);
 				var currentGroup = $('#groupbar li').find("[id='" + attr + "']");
-				$(currentGroup).addClass('group-is-sticky');
+				$(currentGroup).addClass('group-is-sticky', 100);
 			}
 		});
 	} else {
@@ -79,6 +79,8 @@ $(document).ready(function() {
 			datatype: "html",
 			success: function(response) {
 			$("#display").empty().append(response);
+    			$('.group-is-sticky').removeClass('group-is-sticky', 100);
+    			$("#feedbutton").addClass('group-is-sticky', 100);
 			}
 		});
 	}

@@ -66,7 +66,7 @@ header {
 	top: 0px;
 	height: 45px;
 	width: 100%;
-	border-bottom: 1px solid #236C9C;
+	border-bottom: 1px solid #68A5CE;
 	background-color: #2980B9;
 	color: #ECF0F1;
 	z-index: 100;
@@ -374,7 +374,7 @@ aside ul {
 
 .sidebar-heading {
 	display: inline-block;
-	margin: 18px 0 0 10px;
+	margin: 18px 0 8px 10px;
 	font-size: 12px;
 	color: #475763;
 	font-weight: 500;
@@ -385,7 +385,7 @@ aside ul {
 .list-seemore {
 	font-size: 12px;
 	display: block;
-	margin: 18px 0 0 4px;
+	margin: 18px 0 8px 4px;
 	float: left;
 	color: #929292;
 }
