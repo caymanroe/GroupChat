@@ -3,10 +3,8 @@ $(document).ready(function() {
     $("#groupbar li a").click(function() {
     	$('.group-is-sticky').removeClass('group-is-sticky', 100);
     	$(this).addClass('group-is-sticky', 100);
-    	//$('#groupbar li a').css('background-color', '#E6EEF3');
-    	//$(this).css('background-color', '#5BA4D4');
-	    	var groupid = $(this).attr("id");
-				 
+	    var groupid = $(this).attr("id");
+
         $("#display").promise().done(function() {
 				        
 	        $.ajax({
@@ -17,9 +15,10 @@ $(document).ready(function() {
 					group:groupid
 				},
 				success: function(response) {
-					$("#display").children().fadeOut({duration:60, complete: function(){
-						$("#display").empty().append(response).hide().fadeIn(60);
+					$("#display").fadeOut({duration:60, complete: function(){
+						$("#display").empty().prepend(response).hide().fadeIn(60);
 					}});
+
 
 
 				}
