@@ -88,18 +88,18 @@
 	</body>
 	<script type="text/javascript">
 		$.backstretch([
-			"css/images/login1.jpg",
-			"css/images/login2.jpg",
-			"css/images/login3.jpg",
-			"css/images/login4.jpg",
-			"css/images/login5.jpg",
-			"css/images/login6.jpg",
-			"css/images/login7.jpg",
-			"css/images/login8.jpg",
-			"css/images/login9.jpg",
-			"css/images/login10.jpg",
-			"css/images/login11.jpg",
-			"css/images/login12.jpg"
+			"css/images/login1b.jpg",
+			"css/images/login2b.jpg",
+			"css/images/login3b.jpg",
+			"css/images/login4b.jpg",
+			"css/images/login5b.jpg",
+			"css/images/login6b.jpg",
+			"css/images/login7b.jpg",
+			"css/images/login8b.jpg",
+			"css/images/login9b.jpg",
+			"css/images/login10b.jpg",
+			"css/images/login11b.jpg",
+			"css/images/login12b.jpg"
 			], {duration: 5000, fade: 2000});    
 	</script>
 </html>
