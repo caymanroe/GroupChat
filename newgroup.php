@@ -124,9 +124,8 @@
 
 			//Get group ID from entry
 			$id = mysqli_insert_id($con);
-			$InviteError = "Success! New group ID is: ".$id;
 
-			//Insert member relationship for currnt user into database
+			//Insert member relationship for current user into database
 			$relsql = "INSERT INTO `groupmember` (userid, groupid) VALUES ('".$_SESSION['uid']."','".$id."')";
 			if (mysqli_query($con, $relsql)) {
 
@@ -177,8 +176,7 @@
 							//Send email
 							mail($to, $subject, $message, $headers);
 	
-							//Redirect to new group
-							header("Location: index.php?groupId=".$id."");
+
 	
 						} else {
 							//If could not insert new users
@@ -211,6 +209,9 @@
 				//If could not assign user as member of database
 				$InviteError = "There was an error processing your request. Please try again in a few minutes.";
 			}
+
+			//Redirect to new group
+			header("Location: index.php?groupId=".$id."");
 			
 		} else {
 			//If could not insert new group
