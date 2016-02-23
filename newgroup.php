@@ -236,6 +236,11 @@
 		<script src="js/jquery-2.1.4.js"></script>
 		<script src="js/jquery-ui-1.11.4/jquery-ui.min.js"></script>
 		<script src="js/page.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('#NewGroup').hide().fadeIn(500);
+			});
+		</script>
 	</head>
 
 	<body>
@@ -377,4 +382,5 @@
 
 
 	</body>
+
 </html>

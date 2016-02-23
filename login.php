@@ -50,14 +50,15 @@
 		<meta charset="UTF-8">
 		<title>Groupchat</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/mobile.css">
 		<link rel="stylesheet" type="text/css" href="css/roboto.css">
-		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	</head>
 
 	<body>
 		<div id="login_wrap">
 			<div id="welcome">
-				<h1>Welcome to Groupchat.</h1>
+				<h1><span>Welcome to </span>Groupchat.</h1>
 				<p>Connect with friends, colleagues, communities and share your ideas today.</p>
 			</div>
 			
@@ -74,32 +75,41 @@
 
 					<input type="submit" value="Log in" name="Submit" id="submit_btn" class="button">
 					
-					<p id="wrong"> <?php echo $wrong; ?> </p>
+					<p id="wrong"><?php echo $wrong; ?></p>
 					<p id="signup_link">New here? <a href="signup.php">Create an account</a></p>
 
 				</form>
 			</div>
 			
 		</div>
-		
+
 		<script src="js/jquery-2.1.4.js" type="text/javascript"></script>
 		<script type="text/javascript" src="js/jquery.backstretch.min.js"></script>
+		<script type="text/javascript">
 
+			var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;
+
+			jQuery(document).ready(function($){
+    			if(!isMobile) {
+					$.backstretch([
+					"css/images/login1b.jpg",
+					"css/images/login2b.jpg",
+					"css/images/login3b.jpg",
+					"css/images/login4b.jpg",
+					"css/images/login5b.jpg",
+					"css/images/login6b.jpg",
+					"css/images/login7b.jpg",
+					"css/images/login8b.jpg",
+					"css/images/login9b.jpg",
+					"css/images/login10b.jpg",
+					"css/images/login11b.jpg",
+					"css/images/login12b.jpg"
+					], {duration: 5000, fade: 2000});
+    			}
+			});
+
+
+		</script>
 	</body>
-	<script type="text/javascript">
-		$.backstretch([
-			"css/images/login1b.jpg",
-			"css/images/login2b.jpg",
-			"css/images/login3b.jpg",
-			"css/images/login4b.jpg",
-			"css/images/login5b.jpg",
-			"css/images/login6b.jpg",
-			"css/images/login7b.jpg",
-			"css/images/login8b.jpg",
-			"css/images/login9b.jpg",
-			"css/images/login10b.jpg",
-			"css/images/login11b.jpg",
-			"css/images/login12b.jpg"
-			], {duration: 5000, fade: 2000});    
-	</script>
+
 </html>

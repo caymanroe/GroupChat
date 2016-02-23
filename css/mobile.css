@@ -1,0 +1,94 @@
+@media only screen and (max-device-width: 480px) {
+
+	body, html {
+		background-color: white;
+	}
+
+	#login_wrap {
+		width: 100%;
+		top: 0px;
+		background-color: #3F5077;
+	}
+
+	#welcome {
+		float: none;
+		width: 100%;
+		position: relative;
+	}
+
+	#welcome h1 {
+		font-size: 40px;
+		text-align: center;
+		font-family: 'Roboto';
+		padding: 10px 0 0 0;
+	}
+
+	#welcome h1 span {
+		display: none;
+	}
+
+	#welcome p {
+		font-size: 19px;
+		line-height: 20px;
+		padding: 0 17px 0 17px;
+		margin: 10px 0 10px 0;
+	}
+
+	#forms {
+		float: none;
+		position: relative;
+		border-radius: 0px;
+		width: 100%;
+		padding: 10px 0 0 0;
+	}
+
+	#username {
+		height: 55px;
+		margin: 10px auto 0 auto;
+		width: calc(90% - 10px);
+		padding: 5px;
+		position: relative;
+		display: block;
+		font-size: 20px;
+	}
+
+	#password {
+		float: none;
+		width: calc(90% - 10px);
+		margin: 20px auto 0 auto;
+		height: 55px;
+		padding: 5px;
+		display: block;
+		font-size: 20px;
+	}
+
+	#submit_btn {
+		float: none;
+		height: 55px;
+		width: 91%;
+		margin: 20px auto 0 auto;
+		padding: 5px;
+		display: block;
+		-webkit-appearance: none;
+    	-webkit-border-radius:0; 
+    	border-radius:0;
+    	font-size: 25px;
+	}
+
+	#signup_link {
+		font-size: 20px;
+		width: 100%;
+		display: block;
+		margin: 0 auto 20px 0;
+		text-align: center;
+	}
+
+	#wrong {
+		font-size: 20px;
+		width: 100%;
+		display: block;
+		margin: auto;
+		text-align: center;
+	}
+
+}

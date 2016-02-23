@@ -605,7 +605,7 @@ aside ul {
 #login_wrap {
 	width: 840px;
 	margin: auto;
-	background-color: red;
+	background-color: black;
 	position: relative;
 	top: 100px;
 }
@@ -858,6 +858,7 @@ aside ul {
 	background-color: white;
 	border: 1px solid #DDE4E8;
 	padding: 25px;
+	display: none;
 }
 
 #groupList-head h2 {
@@ -873,6 +874,7 @@ aside ul {
 	position: relative;
 	width: 550px;
 	margin: auto;
+	display: none;
 }
 
 .group {
@@ -961,6 +963,7 @@ aside ul {
 	-webkit-box-shadow: 1px 1px 18px 6px rgb(224, 224, 224);
 	-moz-box-shadow:    1px 1px 18px 6px rgb(224, 224, 224);
 	box-shadow:         1px 1px 18px 6px rgb(224, 224, 224);
+	display: none;
 }
 
 #NewGroupHead {
