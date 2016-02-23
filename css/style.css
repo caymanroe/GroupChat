@@ -618,12 +618,14 @@ aside ul {
 #welcome h1 {
 	font-size: 38px;
 	font-weight: bold;
+	color: white;
 }
 
 #welcome p {
 	font-size: 21px;
 	line-height: 31px;
 	margin: 25px 0 0 0;
+	color: white;
 }
 
 #welcome h2 {
